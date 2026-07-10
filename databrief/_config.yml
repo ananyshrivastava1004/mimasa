@@ -1,0 +1,35 @@
+title: The Databrief
+description: "Visual stories on markets, technology, energy, and the numbers behind the news."
+baseurl: ""
+url: ""
+
+markdown: kramdown
+permalink: /:year/:month/:day/:title/
+
+collections:
+  posts:
+    output: true
+
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+
+# Category accent colors — the site's visual legend.
+# Every post must set one of these as its `category`.
+categories:
+  Markets:     "#D98E2B"
+  Technology:  "#1F8A82"
+  Energy:      "#D9573B"
+  Geopolitics: "#6C5DD3"
+  Environment: "#4C7A5E"
+
+plugins:
+  - jekyll-feed
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock

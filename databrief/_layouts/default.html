@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% if page.title %}{{ page.title }} · {% endif %}{{ site.title }}</title>
+  <meta name="description" content="{{ page.excerpt | default: site.description | strip_html | truncate: 150 }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+</head>
+<body>
+
+  <header class="masthead">
+    <div class="masthead-inner">
+      <a href="{{ '/' | relative_url }}" class="brand">
+        <span class="brand-mark"><span></span><span></span><span></span><span></span></span>
+        <span class="brand-word">The Databrief</span>
+      </a>
+      <nav class="nav-cats">
+        {% for cat in site.categories %}
+        <a href="{{ '/' | relative_url }}#{{ cat[0] }}" class="cat-{{ cat[0] }}">{{ cat[0] }}</a>
+        {% endfor %}
+      </nav>
+    </div>
+  </header>
+
+  {{ content }}
+
+  <footer class="site-footer">
+    &copy; {{ 'now' | date: "%Y" }} The Databrief — built with Jekyll, hosted free on GitHub Pages.
+  </footer>
+
+</body>
+</html>

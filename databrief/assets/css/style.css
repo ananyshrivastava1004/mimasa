@@ -1,0 +1,396 @@
+/* ============================================================
+   THE DATABRIEF — design tokens
+   Ink on paper editorial base, with a category color-legend
+   system as the site's signature device: every card, tag,
+   and chart glyph is color-coded to its beat, so the palette
+   itself becomes navigation.
+   ============================================================ */
+
+:root {
+  --ink: #16191F;
+  --ink-soft: #4A4F58;
+  --paper: #FBFBF9;
+  --paper-raised: #FFFFFF;
+  --line: #E4E1DA;
+
+  --amber: #D98E2B;     /* Markets */
+  --teal: #1F8A82;      /* Technology */
+  --coral: #D9573B;     /* Energy */
+  --violet: #6C5DD3;    /* Geopolitics */
+  --sage: #4C7A5E;      /* Environment */
+
+  --display: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+  --body: 'Source Serif 4', Georgia, serif;
+  --mono: 'IBM Plex Mono', 'Courier New', monospace;
+
+  --max: 1180px;
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 17px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; text-decoration: none; }
+
+img { max-width: 100%; display: block; }
+
+.wrap {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ---------- Masthead ---------- */
+
+.masthead {
+  border-bottom: 1px solid var(--line);
+  background: var(--paper-raised);
+}
+
+.masthead-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px;
+  max-width: var(--max);
+  margin: 0 auto;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand-mark {
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 26px;
+}
+
+.brand-mark span {
+  width: 5px;
+  display: block;
+  border-radius: 1px;
+}
+.brand-mark span:nth-child(1) { height: 40%; background: var(--amber); }
+.brand-mark span:nth-child(2) { height: 70%; background: var(--teal); }
+.brand-mark span:nth-child(3) { height: 55%; background: var(--coral); }
+.brand-mark span:nth-child(4) { height: 100%; background: var(--violet); }
+
+.brand-word {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 26px;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+}
+
+.nav-cats {
+  display: flex;
+  gap: 22px;
+  flex-wrap: wrap;
+  font-family: var(--display);
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 14.5px;
+  letter-spacing: 0.03em;
+}
+
+.nav-cats a {
+  padding-bottom: 4px;
+  border-bottom: 2px solid transparent;
+  transition: border-color .15s ease;
+}
+.nav-cats a:hover { border-bottom-color: var(--cat-color, var(--ink)); }
+
+/* ---------- Category chip / legend system ---------- */
+
+.chip {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 11.5px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 3px 9px;
+  border-radius: 3px;
+  color: #fff;
+  background: var(--cat-color, var(--ink-soft));
+}
+
+.cat-Markets      { --cat-color: var(--amber); }
+.cat-Technology   { --cat-color: var(--teal); }
+.cat-Energy       { --cat-color: var(--coral); }
+.cat-Geopolitics  { --cat-color: var(--violet); }
+.cat-Environment  { --cat-color: var(--sage); }
+
+/* ---------- Layout: main grid ---------- */
+
+.layout {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 48px;
+  padding: 40px 24px 80px;
+  max-width: var(--max);
+  margin: 0 auto;
+}
+
+@media (max-width: 860px) {
+  .layout { grid-template-columns: 1fr; }
+}
+
+/* ---------- Hero feature ---------- */
+
+.hero {
+  border-top: 4px solid var(--cat-color, var(--ink));
+  padding-top: 20px;
+  margin-bottom: 48px;
+}
+
+.hero-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.hero h1 {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: clamp(34px, 5vw, 58px);
+  line-height: 1.03;
+  margin: 0 0 16px;
+  letter-spacing: -0.01em;
+}
+
+.hero .dek {
+  font-size: 19px;
+  color: var(--ink-soft);
+  max-width: 640px;
+  margin: 0 0 22px;
+}
+
+.stat-callout {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 10px;
+  font-family: var(--mono);
+  border: 1px solid var(--line);
+  padding: 10px 16px;
+  border-radius: 4px;
+  background: var(--paper-raised);
+}
+.stat-callout .num {
+  font-size: 26px;
+  font-weight: 600;
+  color: var(--cat-color, var(--ink));
+}
+.stat-callout .label {
+  font-size: 12.5px;
+  color: var(--ink-soft);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+/* ---------- Post grid / cards ---------- */
+
+.grid-heading {
+  font-family: var(--display);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: 14px;
+  color: var(--ink-soft);
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 8px;
+  margin: 0 0 20px;
+}
+
+.post-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px 32px;
+}
+
+@media (max-width: 600px) {
+  .post-grid { grid-template-columns: 1fr; }
+}
+
+.card {
+  border-top: 3px solid var(--cat-color, var(--ink));
+  padding-top: 14px;
+}
+
+.card .thumb {
+  margin-bottom: 12px;
+  border-radius: 3px;
+  overflow: hidden;
+  background: var(--paper-raised);
+  border: 1px solid var(--line);
+}
+
+.card-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+  font-family: var(--mono);
+  font-size: 11.5px;
+  color: var(--ink-soft);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.card h3 {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 23px;
+  line-height: 1.12;
+  margin: 0 0 8px;
+}
+
+.card p {
+  color: var(--ink-soft);
+  font-size: 15.5px;
+  margin: 0;
+}
+
+/* ---------- Sidebar ---------- */
+
+.sidebar-block {
+  margin-bottom: 40px;
+}
+
+.subscribe {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 26px 22px;
+  border-radius: 4px;
+}
+.subscribe h4 {
+  font-family: var(--display);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  font-size: 18px;
+  margin: 0 0 6px;
+}
+.subscribe p {
+  font-size: 14px;
+  color: #C9CCD3;
+  margin: 0 0 16px;
+}
+.subscribe input {
+  width: 100%;
+  padding: 10px 12px;
+  border: none;
+  border-radius: 3px;
+  margin-bottom: 10px;
+  font-family: var(--body);
+  font-size: 14px;
+}
+.subscribe button {
+  width: 100%;
+  padding: 10px 12px;
+  border: none;
+  border-radius: 3px;
+  background: var(--amber);
+  color: #16191F;
+  font-family: var(--display);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.trending-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.trending-list li {
+  display: flex;
+  gap: 14px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--line);
+}
+.trending-list li:first-child { padding-top: 0; }
+.rank {
+  font-family: var(--mono);
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--line);
+  line-height: 1;
+}
+.trending-list h5 {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 16px;
+  margin: 0 0 4px;
+  line-height: 1.2;
+}
+.trending-list .chip { margin-top: 2px; }
+
+/* ---------- Single post ---------- */
+
+.post-header {
+  border-top: 4px solid var(--cat-color, var(--ink));
+  padding-top: 22px;
+  max-width: 760px;
+  margin: 0 auto 32px;
+}
+.post-header h1 {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: clamp(30px, 4.5vw, 46px);
+  line-height: 1.06;
+  margin: 14px 0 12px;
+}
+.post-meta {
+  font-family: var(--mono);
+  font-size: 12.5px;
+  color: var(--ink-soft);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+.post-body {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 24px 80px;
+  font-size: 18px;
+}
+.post-body h2 {
+  font-family: var(--display);
+  font-size: 28px;
+  margin-top: 40px;
+}
+.post-body figure { margin: 32px 0; }
+.post-body figcaption {
+  font-family: var(--mono);
+  font-size: 12.5px;
+  color: var(--ink-soft);
+  margin-top: 8px;
+}
+
+/* ---------- Footer ---------- */
+
+.site-footer {
+  border-top: 1px solid var(--line);
+  padding: 28px 24px;
+  text-align: center;
+  font-family: var(--mono);
+  font-size: 12.5px;
+  color: var(--ink-soft);
+}

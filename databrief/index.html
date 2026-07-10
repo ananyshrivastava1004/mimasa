@@ -1,0 +1,71 @@
+---
+layout: default
+title: Home
+---
+
+{% assign posts = site.posts %}
+{% assign featured = posts | first %}
+{% assign rest = posts | slice: 1, 6 %}
+
+<div class="layout">
+  <main>
+
+    <section class="hero cat-{{ featured.category }}">
+      <div class="hero-eyebrow">
+        <span class="chip cat-{{ featured.category }}">{{ featured.category }}</span>
+        <span class="post-meta">{{ featured.date | date: "%B %-d, %Y" }}</span>
+      </div>
+      <a href="{{ featured.url | relative_url }}"><h1>{{ featured.title }}</h1></a>
+      <p class="dek">{{ featured.excerpt | strip_html | truncate: 160 }}</p>
+      {% if featured.stat_number %}
+      <div class="stat-callout">
+        <span class="num">{{ featured.stat_number }}</span>
+        <span class="label">{{ featured.stat_label }}</span>
+      </div>
+      {% endif %}
+    </section>
+
+    <h2 class="grid-heading">Latest Stories</h2>
+    <div class="post-grid">
+      {% for post in rest %}
+      <div class="card cat-{{ post.category }}">
+        <div class="thumb">
+          {% include chart-thumb.html color=post.accent bars=post.chart_bars height=110 %}
+        </div>
+        <div class="card-meta">
+          <span class="chip cat-{{ post.category }}">{{ post.category }}</span>
+          <span>{{ post.date | date: "%b %-d, %Y" }}</span>
+        </div>
+        <a href="{{ post.url | relative_url }}"><h3>{{ post.title }}</h3></a>
+        <p>{{ post.excerpt | strip_html | truncate: 100 }}</p>
+      </div>
+      {% endfor %}
+    </div>
+
+  </main>
+
+  <aside>
+    <div class="sidebar-block subscribe">
+      <h4>Get the brief</h4>
+      <p>One visual story a week, straight to your inbox. No spam, just charts.</p>
+      <input type="email" placeholder="you@email.com">
+      <button type="button">Subscribe</button>
+    </div>
+
+    <div class="sidebar-block">
+      <h4 class="grid-heading">Trending</h4>
+      <ul class="trending-list">
+        {% assign trending = site.posts | slice: 0, 4 %}
+        {% for post in trending %}
+        <li>
+          <span class="rank">{{ forloop.index }}</span>
+          <div>
+            <h5><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h5>
+            <span class="chip cat-{{ post.category }}">{{ post.category }}</span>
+          </div>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </aside>
+</div>

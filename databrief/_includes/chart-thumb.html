@@ -1,0 +1,18 @@
+{% comment %}
+  Usage: {% include chart-thumb.html color="#D98E2B" bars="30,55,40,80,65" height=120 %}
+{% endcomment %}
+{% assign bar_list = include.bars | split: "," %}
+{% assign h = include.height | default: 120 %}
+<svg viewBox="0 0 300 {{ h }}" width="100%" preserveAspectRatio="none" style="display:block;">
+  <rect width="300" height="{{ h }}" fill="#FFFFFF"/>
+  {% assign n = bar_list.size %}
+  {% assign gap = 10 %}
+  {% assign bw = 300 | divided_by: n | minus: gap %}
+  {% for b in bar_list %}
+    {% assign bh = b | times: 1 %}
+    {% assign bh_scaled = bh | times: h | divided_by: 100 %}
+    {% assign x = forloop.index0 | times: bw | plus: forloop.index0 | times: gap | plus: 6 %}
+    {% assign y = h | minus: bh_scaled %}
+    <rect x="{{ x }}" y="{{ y }}" width="{{ bw }}" height="{{ bh_scaled }}" fill="{{ include.color }}" opacity="{% if forloop.last %}1{% else %}0.55{% endif %}"/>
+  {% endfor %}
+</svg>
