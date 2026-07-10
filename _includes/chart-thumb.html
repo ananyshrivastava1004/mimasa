@@ -8,10 +8,12 @@
   {% assign n = bar_list.size %}
   {% assign gap = 10 %}
   {% assign bw = 300 | divided_by: n | minus: gap %}
+  {% assign step = bw | plus: gap %}
   {% for b in bar_list %}
     {% assign bh = b | times: 1 %}
     {% assign bh_scaled = bh | times: h | divided_by: 100 %}
-    {% assign x = forloop.index0 | times: bw | plus: forloop.index0 | times: gap | plus: 6 %}
+    {% assign offset = forloop.index0 | times: step %}
+    {% assign x = offset | plus: 6 %}
     {% assign y = h | minus: bh_scaled %}
     <rect x="{{ x }}" y="{{ y }}" width="{{ bw }}" height="{{ bh_scaled }}" fill="{{ include.color }}" opacity="{% if forloop.last %}1{% else %}0.55{% endif %}"/>
   {% endfor %}
