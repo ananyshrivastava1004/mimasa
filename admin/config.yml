@@ -1,0 +1,30 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "assets/images/uploads"
+public_folder: "/assets/images/uploads"
+
+collections:
+  - name: "posts"
+    label: "Posts"
+    folder: "_posts"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - label: "Category"
+        name: "category"
+        widget: "select"
+        options: ["Markets", "Technology", "Energy", "Geopolitics", "Environment"]
+      - label: "Accent Color (hex, must match category)"
+        name: "accent"
+        widget: "string"
+        hint: "Markets #D98E2B · Technology #1F8A82 · Energy #D9573B · Geopolitics #6C5DD3 · Environment #4C7A5E"
+      - label: "Chart Bars"
+        name: "chart_bars"
+        widget: "string"
+        hint: "Comma-separated numbers 0-100, e.g. 30,50,40,70,90"
+      - { label: "Author", name: "author", widget: "string", required: false }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Body", name: "body", widget: "markdown" }
