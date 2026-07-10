@@ -1,7 +1,7 @@
 title: The Databrief
 description: "Visual stories on markets, technology, energy, and the numbers behind the news."
-baseurl: ""
-url: "https://effulgent-centaur-ca01c7.netlify.app"
+baseurl: "/mimasa"
+url: "https://ananyshrivastava1004.github.io"
 
 markdown: kramdown
 permalink: /:year/:month/:day/:title/
