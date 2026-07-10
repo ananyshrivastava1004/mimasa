@@ -1,6 +1,6 @@
 title: The Databrief
 description: "Visual stories on markets, technology, energy, and the numbers behind the news."
-baseurl: ""
+baseurl: "/mimasa"
 url: ""
 
 markdown: kramdown
