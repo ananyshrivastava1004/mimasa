@@ -2,7 +2,7 @@ backend:
   name: github
   repo: ananyshrivastava1004/mimasa
   branch: main
-  base_url: https://YOUR-PROXY-NAME.vercel.app
+  base_url: https://ananyshrivastava1004.github.io/mimasa/admin/
 
 media_folder: "assets/images/uploads"
 public_folder: "/assets/images/uploads"
