@@ -3,6 +3,7 @@ backend:
   repo: ananyshrivastava1004/mimasa
   branch: main
   base_url: https://ananyshrivastava1004.github.io/mimasa/admin/
+  auth_endpoint: api/auth
 
 media_folder: "assets/images/uploads"
 public_folder: "/assets/images/uploads"
