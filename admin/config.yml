@@ -2,8 +2,8 @@ backend:
   name: github
   repo: ananyshrivastava1004/mimasa
   branch: main
-  base_url: https://ananyshrivastava1004.github.io/mimasa/
-  auth_endpoint: https://thoughts-cms-proxy.vercel.app/api/auth
+  base_url: https://thoughts-cms-proxy.vercel.app
+  auth_endpoint: auth
 
 media_folder: "assets/images/uploads"
 public_folder: "/assets/images/uploads"
